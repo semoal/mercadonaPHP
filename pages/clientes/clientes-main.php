@@ -17,6 +17,9 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <link href="../admin/css/datepicker.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="../admin/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../admin/css/sweetalert.css">
 
     <style type="text/css">
       @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -407,23 +410,14 @@
                 <div class="inner-block" style="padding:1em 0em 0em 0em;height:100vh;">
                 <div class="row" style="padding-left:2em;padding-bottom:1em;">
                     <div class="col-md-3">
-                        <input class="form-control" type="text" name="buscador" placeholder="Busca un producto...">
-                    </div>
-                    <div class="col-md-3" style="width: 21.666667%;">
-                        <select class="selectpicker" title="Elige una categoria...">
-                          <option value="bebida">Bebida</option>
-                          <option value="comida">Comida</option>
-                          <option value="higiene">Higiene personal</option>
-                          <option value="limpieza">Limpieza del hogar</option>
-                          <option value="mascotas">Cuidado de mascotas</option>
-                        </select>
+                        <input class="form-control" id="buscador" type="text" name="buscador" placeholder="Busca un producto...">
                     </div>
                     <div class="col-md-3">
                         <select class="selectpicker" title="Ordenar por...">
                           <option value="asc">Precio: de más bajo a más alto</option>
                           <option value="desc">Precio: de más alto a más bajo</option>
-                          <option value="valoracion">Valoración media de los clientes</option>
-                          <option value="ofertas">Solo productos en oferta</option>
+                          <option value="rating">Valoración media de los clientes</option>
+                          <option value="oferta">Solo productos en oferta</option>
                         </select>
                     </div>
                 </div>
@@ -432,9 +426,41 @@
                     <div class="container">
                         <div id="productspage" class="row">
                                 <script type="text/javascript">
-                                   $.post('products.php').then(function(data){
-                                      var list = $('#productspage').html(data);
-                                    });
+                                var param = null;
+                                var bla = "";
+                                $('#buscador').on('input', function() { 
+                                    bla = $('#buscador').val();
+                                    searchItems(bla);
+                                  
+                               });
+                                function searchItems(bla){
+                                    if(bla!= ""){
+                                      $.post('products.php?nombre='+bla).then(function(data){
+                                        var list = $('#productspage').html(data);
+                                      });
+                                      }else{
+                                        $.post('products.php').then(function(data){
+                                        var list = $('#productspage').html(data);
+                                      });
+                                    }
+                                }
+                                searchItems(bla);
+                                 $('select').on('change', function() {
+                                      param = this.value;
+                                      selectOption(param);
+                                  });
+                                function selectOption(param){
+                                    if(param!= null){
+                                      $.post('products.php?'+param).then(function(data){
+                                        var list = $('#productspage').html(data);
+                                      });
+                                      }else{
+                                        $.post('products.php').then(function(data){
+                                          var list = $('#productspage').html(data);
+                                      });
+                                    }
+                                }
+                                selectOption(param); 
                                 </script>
                         </div>  
                     <!-- TERMINA EL CONTAINER -->   
@@ -447,6 +473,11 @@
         <div class="sidebar-menu">
             <div class="menu">
                 <ul id="menu">
+                 <?php if(login_check($mysqli)==true && $role == 'Admin') { ?>
+                  <li id="menu-home"><a href="../admin/admin-cp"><i class="fa fa-area-chart"></i><span>Panel de administración</span></a></li>
+                 <?php 
+                  }
+                 ?>
                     <li id="menu-home"><a href="clientes-main"><i class="fa fa-cutlery"></i><span>Productos</span></a></li>
                     <li id="menu-home"><a href="pedidosRealizados"><i class="fa fa-shopping-bag"></i><span>Mis pedidos</span></a></li>
                     <li id="menu-home"><a href="perfil"><i class="fa fa-user"></i><span>Perfil</span></a></li>
@@ -464,7 +495,7 @@
     <div class="inner-block">
         <div class="error-404">
             <div class="error-page-left">
-                <img src="images/404.png" alt="">
+                <img src="../../404.png" alt="">
             </div>
             <div class="error-right">
                 <h2>Oops! No se pudo abrir la página</h2>

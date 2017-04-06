@@ -1,9 +1,8 @@
 <?php
 include_once '../../controllers/db_connect.php';
 include_once '../../controllers/functions.php';
-
+include_once 'carritosFunctions.php';
 sec_session_start();
-$prep_stmt = "SELECT * FROM productos";
 $stmt = $mysqli->prepare($prep_stmt);
 if ($stmt) {
     $stmt->execute();

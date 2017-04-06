@@ -20,7 +20,10 @@ if(isset($_REQUEST['ped']) && is_numeric($_REQUEST['ped']) ){
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h2>Factura</h2><h3 class="pull-right">Pedido # <?php echo $numPedidoRequest ?></h3>
+                 <h2>Factura</h2>
+                 <img style="right:0;position: absolute;top: 10px;width:10%;" class="img-responsive" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAl21or5hwbtUZor6albs9l12G7llpqfjQHn-YJPDPJYJb9mX2ncdpkfE" alt="Logo" />
+                 <h3 class="pull-right">
+                 Pedido # <?php echo $numPedidoRequest ?></h3>
             </div>
             <hr>
             <div class="row">

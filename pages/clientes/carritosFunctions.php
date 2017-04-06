@@ -3,8 +3,6 @@ include_once '../../controllers/db_connect.php';
 include_once '../../controllers/functions.php';
 //Query para insertar en la base de datos de carrito 
 //Insertamos en carrito: idUser,idProducto,cantidad,precio,oferta
-//Pedimos por parametro el idDel producto a añadir y la cantidad
-//INSERT INTO carrito c(idUser,idProducto,cantidad,precio,oferta) SELECT precio,oferta from productos p where p.idProducto = c.idProducto;
 if(isset($_REQUEST['buyProd']) && isset($_REQUEST['buyCant'])){
 	$idProductoBuy = $_REQUEST['buyProd'];
 	$cantidad = $_REQUEST['buyCant'];	
@@ -15,6 +13,30 @@ if(isset($_REQUEST['buyProd']) && isset($_REQUEST['buyCant'])){
 	            exit();
 	    	}
 	}
+}
+
+//Si recibimos que quiere productos solo con ofertas
+if(isset($_REQUEST['oferta'])){
+	$prep_stmt = "SELECT * FROM productos where oferta != 0";
+}else{
+	$prep_stmt = "SELECT * FROM productos";
+}
+//Ordenar ascendentemnte
+if(isset($_REQUEST['asc'])){
+	$prep_stmt = "SELECT * FROM productos ORDER BY precio ASC";
+}
+//Ordenar descent
+if(isset($_REQUEST['desc'])){
+	$prep_stmt = "SELECT * FROM productos ORDER BY precio DESC";
+}
+//Ordernar por valoracion DESC siempre
+if(isset($_REQUEST['rating'])){
+	$prep_stmt = "SELECT * FROM productos ORDER BY rating DESC";
+}
+//Busca por nombre de buscador
+if(isset($_REQUEST['nombre'])){
+	$nombreBuscar = $_REQUEST['nombre'];
+	$prep_stmt = "SELECT * FROM productos where nombreProducto like '$nombreBuscar%'";
 }
 
 function cantidadProductos (){
@@ -45,6 +67,7 @@ if(isset($_REQUEST['del'])){
 		}  
 }
 
+//comprar
 if(isset($_REQUEST['buy'])){
 	$numCarrito=0;
 	$prep_stmt = "select max(numCarrito) from ventas where idUser = ?";
@@ -72,6 +95,7 @@ if(isset($_REQUEST['buy'])){
 	    		(numCarrito, idProducto, idUser, fechaCompra,cantidad) VALUES (?, ?, ?, NOW(), ?)")) {
 			        $insert_stmt->bind_param('iiii', $numCarrito, $idProducto, $_SESSION['user_id'], $cantidad);
 			        if ($insert_stmt->execute()) {
+
 			    	}
 			}
 	    }

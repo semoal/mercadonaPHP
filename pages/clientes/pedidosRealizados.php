@@ -607,6 +607,11 @@
         <div class="sidebar-menu">
             <div class="menu">
                 <ul id="menu">
+              <?php if(login_check($mysqli)==true && $role == 'Admin') { ?>
+                  <li id="menu-home"><a href="../admin/admin-cp"><i class="fa fa-area-chart"></i><span>Panel de administración</span></a></li>
+                 <?php 
+                  }
+                 ?>
                     <li id="menu-home"><a href="clientes-main"><i class="fa fa-cutlery"></i><span>Productos</span></a></li>
                     <li id="menu-home"><a href="pedidosRealizados"><i class="fa fa-shopping-bag"></i><span>Mis pedidos</span></a></li>
                     <li id="menu-home"><a href="perfil"><i class="fa fa-user"></i><span>Perfil</span></a></li>
@@ -624,7 +629,7 @@
     <div class="inner-block">
         <div class="error-404">
             <div class="error-page-left">
-                <img src="images/404.png" alt="">
+                <img src="../../404.png" alt="">
             </div>
             <div class="error-right">
                 <h2>Oops! No se pudo abrir la página</h2>

@@ -148,13 +148,13 @@
     <div class="col-sm-4">
       <div class="panel panel-default">
         <div class="panel-body">
-          <img src="https://www.mercadona.es/img-cont/es/responsabilidad.jpg" class="img-responsive" style="width:100%;margin:0 auto;" alt="Image">
+          <img src="images/prensa.jpg" class="img-responsive" style="width:100%;margin:0 auto;" alt="Image">
         </div>
         <div class="panel-footer"><h6>Sala de prensa</h6></div>
       </div>
       <div class="panel panel-default">
         <div class="panel-body">
-          <img src="https://www.mercadona.es/img-cont/es/organizacion.jpg" class="img-responsive" style="width:100%" alt="Image">
+          <img src="images/prensa2.jpg" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="panel-footer"><h6>Gobierno corporativo</h6></div>
       </div>
@@ -162,13 +162,13 @@
     <div class="col-sm-4">
       <div class="panel panel-default">
         <div class="panel-body">
-          <img src="https://www.mercadona.es/img-cont/es/memorias-anuales-0.jpg" class="img-responsive" style="width:100%" alt="Image">
+          <img src="images/prensa3.jpg" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="panel-footer"><h6>Modelo</h6></div>
       </div>
       <div class="panel panel-default">
         <div class="panel-body">
-          <img src="https://www.mercadona.es/img-cont/es/historia.jpg" class="img-responsive" style="width:100%" alt="Image">
+          <img src="images/prensa4.jpg" class="img-responsive" style="width:100%" alt="Image">
         </div>
         <div class="panel-footer"><h6>Historia</h6></div>
       </div>

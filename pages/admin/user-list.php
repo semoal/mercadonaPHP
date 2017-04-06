@@ -3,13 +3,15 @@ include_once '../../controllers/db_connect.php';
 include_once '../../controllers/functions.php';
 
 sec_session_start();
- $prep_stmt = "SELECT idUser,username,picture,nif,role,nombre,apellido1,apellido2,direccion,telefono,provincia,fecha_nacimiento,email FROM users";
+ $prep_stmt = "SELECT u.idUser,username,picture,nif,role,nombre,apellido1,apellido2,direccion,telefono,provincia,fecha_nacimiento,email,max(numCarrito) FROM ventas v, users u, productos p where v.idProducto = p.idProducto group by u.idUser";
+
       $stmt = $mysqli->prepare($prep_stmt);
       if ($stmt) {
           $stmt->execute();
           $stmt->store_result();
-          $stmt->bind_result($idUser,$username,$picture,$nif,$role,$nombre,$apellido1,$apellido2,$direccion,$telefono,$provincia,$fecha_nacimiento,$email);
+          $stmt->bind_result($idUser,$username,$picture,$nif,$role,$nombre,$apellido1,$apellido2,$direccion,$telefono,$provincia,$fecha_nacimiento,$email,$compras);
       }  
+ $ingresos = 0;
 
 ?>
  <div class="main-box no-header clearfix">
@@ -31,7 +33,7 @@ sec_session_start();
        <th><span>Dirección</span></th>
        <th><span>Provincia</span></th>
        <th><span>Telefono</span></th>
-       <th class="text-center"><span>Gasto</span></th>
+       <th class="text-center"><span>Compras</span></th>
        <th><span>Email</span></th>
     	 <th><span>Role</span></th>
        <th><span>Opciones</span></th>
@@ -59,7 +61,11 @@ sec_session_start();
        <td class="col-md-2"><?php echo $provincia ?></td>
        <td><?php echo $telefono ?></td>
        <td class="text-center"> 
-          <span class="label label-default">0€</span>
+          <span class="label label-default">
+          <?php
+            echo $compras.' compras';
+            ?>
+          </span>
       </td>
       <td> 
           <a href="#"><?php echo $email ?></a>

@@ -187,6 +187,12 @@
                             </i><span>Listado productos</span>
                         </a>
                     </li>
+                    <li id="menu-home">
+                        <a href="../clientes/clientes-main">
+                            <i class="fa fa-shopping-cart">
+                            </i><span>Comprar productos</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -233,7 +239,7 @@
     <div class="inner-block">
         <div class="error-404">
             <div class="error-page-left">
-                <img src="images/404.png" alt="">
+                <img src="../../404.png" alt="">
             </div>
             <div class="error-right">
                 <h2>Oops! No se pudo abrir la página</h2>

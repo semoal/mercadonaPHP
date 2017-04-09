@@ -3,15 +3,13 @@ include_once '../../controllers/db_connect.php';
 include_once '../../controllers/functions.php';
 
 sec_session_start();
- $prep_stmt = "SELECT u.idUser,username,picture,nif,role,nombre,apellido1,apellido2,direccion,telefono,provincia,fecha_nacimiento,email,max(numCarrito) FROM ventas v, users u, productos p where v.idProducto = p.idProducto group by u.idUser";
-
+ $prep_stmt = "SELECT idUser,username,picture,nif,role,nombre,apellido1,apellido2,direccion,telefono,provincia,fecha_nacimiento,email FROM users";
       $stmt = $mysqli->prepare($prep_stmt);
       if ($stmt) {
           $stmt->execute();
           $stmt->store_result();
-          $stmt->bind_result($idUser,$username,$picture,$nif,$role,$nombre,$apellido1,$apellido2,$direccion,$telefono,$provincia,$fecha_nacimiento,$email,$compras);
+          $stmt->bind_result($idUser,$username,$picture,$nif,$role,$nombre,$apellido1,$apellido2,$direccion,$telefono,$provincia,$fecha_nacimiento,$email);
       }  
- $ingresos = 0;
 
 ?>
  <div class="main-box no-header clearfix">
@@ -33,9 +31,9 @@ sec_session_start();
        <th><span>Dirección</span></th>
        <th><span>Provincia</span></th>
        <th><span>Telefono</span></th>
-       <th class="text-center"><span>Compras</span></th>
+       <th class="text-center"><span>Gasto</span></th>
        <th><span>Email</span></th>
-    	 <th><span>Role</span></th>
+       <th><span>Role</span></th>
        <th><span>Opciones</span></th>
     </tr>
  </thead>
@@ -61,11 +59,7 @@ sec_session_start();
        <td class="col-md-2"><?php echo $provincia ?></td>
        <td><?php echo $telefono ?></td>
        <td class="text-center"> 
-          <span class="label label-default">
-          <?php
-            echo $compras.' compras';
-            ?>
-          </span>
+          <span class="label label-default">0€</span>
       </td>
       <td> 
           <a href="#"><?php echo $email ?></a>
@@ -74,11 +68,11 @@ sec_session_start();
           <span><?php echo $role ?></a>
       </td>
        <td style="width: 20%;"> 
-           <a data-toggle="modal" data-target="#myModal" class="btn btn-success editProfile" data-id="<?php echo $userid?>" aria-label="Delete"> 
+           <a data-toggle="modal" data-target="#myModal" class="btn btn-success editProfile" data-id="<?php echo $idUser?>" aria-label="Delete"> 
               <i class="fa fa-edit" aria-hidden="true"></i>
           </a>
           <a class="btn btn-danger" 
-          href="?userid_del=<?php echo $userid ?>" 
+          href="?userid_del=<?php echo $idUser ?>" 
           aria-label="Delete">
           <i class="fa fa-trash-o" aria-hidden="true"></i>
           </a>

@@ -49,6 +49,136 @@
           color: #00754D;
           transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
       }
+      .lighter-text {
+        color: #ABB0BE;
+      }
+
+      .main-color-text {
+        color: #6394F8;
+      }
+
+      nav {
+        padding: 20px 0 40px 0;
+        background: #F8F8F8;
+        font-size: 16px;
+      }
+      nav .navbar-left {
+        float: left;
+      }
+      nav .navbar-right {
+        float: right;
+      }
+      nav ul li {
+        display: inline;
+        padding-left: 20px;
+      }
+      nav ul li a {
+        color: #777777;
+        text-decoration: none;
+      }
+      nav ul li a:hover {
+        color: black;
+      }
+
+      .container-shopping {
+        margin: auto;
+        width: 80%;
+      }
+
+      .badge {
+        background-color: #6394F8;
+        border-radius: 10px;
+        color: white;
+        display: inline-block;
+        font-size: 12px;
+        line-height: 1;
+        padding: 3px 7px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+
+      .shopping-cart {
+        margin: 20px 0;
+        float: right;
+        background: white;
+        width: 320px;
+        position: relative;
+        border-radius: 3px;
+        padding: 20px;
+      }
+      .shopping-cart .shopping-cart-header {
+        border-bottom: 1px solid #E8E8E8;
+        padding-bottom: 15px;
+      }
+      .shopping-cart .shopping-cart-header .shopping-cart-total {
+        float: right;
+      }
+      .shopping-cart .shopping-cart-items {
+        padding-top: 20px;
+      }
+      .shopping-cart .shopping-cart-items li {
+        margin-bottom: 18px;
+      }
+      .shopping-cart .shopping-cart-items img {
+        float: left;
+        margin-right: 12px;
+      }
+      .shopping-cart .shopping-cart-items .item-name {
+        display: block;
+        padding-top: 10px;
+        font-size: 16px;
+      }
+      .shopping-cart .shopping-cart-items .item-price {
+        color: #6394F8;
+        margin-right: 8px;
+      }
+      .shopping-cart .shopping-cart-items .item-quantity {
+        color: #ABB0BE;
+      }
+
+      .shopping-cart:after {
+        bottom: 100%;
+        left: 89%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: white;
+        border-width: 8px;
+        margin-left: -8px;
+      }
+
+      .cart-icon {
+        color: #515783;
+        font-size: 24px;
+        margin-right: 7px;
+        float: left;
+      }
+
+      .button {
+        background: #6394F8;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        display: block;
+        border-radius: 3px;
+        font-size: 16px;
+        margin: 25px 0 15px 0;
+      }
+      .button:hover {
+        background: #729ef9;
+      }
+
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
       .datepicker {
           top: 0;
           left: 0;
@@ -253,37 +383,39 @@
                             <ul>
                                 <li class="dropdown profile_details_drop">
                                  <span class="prfil-img" style="position: absolute;right:150px;cursor: pointer;">
-                                    <span data-toggle="modal" data-target="#carritoCompra" class="fa-stack fa-2x">
-                                      <i style="color:#00754D" class="fa fa-square fa-stack-2x"></i>
-                                      <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                                    <span class="fa-stack fa-2x openCarrito">
+                                      <i class="fa fa-shopping-cart fa-stack-1x"></i>
                                       <span class="badge badge"><?php cantidadProductos(); ?> </span>
                                     </span>
                                   </span>
-                                <!-- Modal lista de la compra -->
-                                  <div id="carritoCompra" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                          <h4 class="heading">Carrito de la compra</h4>
-                                        </div>
-                                        <div class="modal-body cart">
+                                  <div class="container-shopping" style="position: absolute;z-index: 993;display:none;">
+                                    <div class="shopping-cart">
+                                      <div class="shopping-cart-header">
+                                        <i class="fa fa-shopping-cart cart-icon"></i>>
+                                        
+                                      </div>
+
+                                      <div class="prueba">
                                       <script type="text/javascript">
                                          $.post('contenidoCart.php').then(function(data){
-                                            var list = $('.cart').html(data);
+                                            var list = $('.prueba').html(data);
                                           });
                                       </script>
-                                        </div> 
-                                       <div class="modal-footer">
-                                         <a href="?buy">
-                                           <button type="submit" name="comprar" class="btn btn-primary">Pagar</button>
-                                         </a>
-                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                      </div>                
                                       </div>
-                                    </div>
-                                  </div>
-                                <!-- ADIOS --> 
+
+                                      <a href="?buy">
+                                           <button type="submit" name="comprar" class="btn btn-primary btn-block">Pagar</button>
+                                      </a>
+                                    </div> 
+                                  </div> 
+                                  <script type="text/javascript">
+                                    (function(){
+                                      $(".openCarrito").on("click", function() {
+                                        $(".container-shopping").fadeToggle( "fast");
+                                      });
+                                      
+                                    })();
+                                  </script>
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         <div class="profile_img">
                                             <span class="prfil-img">

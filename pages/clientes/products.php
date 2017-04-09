@@ -16,7 +16,7 @@ if ($stmt) {
 	   		<a style="cursor:pointer;" data-toggle="modal" data-target="#myModal" class="showModalProductos" data-id="<?php echo $idProducto?>">
 	   			
 				<div class="post-img-content">
-					<span style="position: absolute;z-index: 999;top: 6px;right: 6px;padding: 6px;" class="label label-primary">
+					<span style="position: absolute;z-index: 99;top: 6px;right: 6px;padding: 6px;" class="label label-primary">
                         <?php echo ucwords($categoria) ?>
                     </span>
 				    <img style="width:350px;height:206px;" src="<?php echo $foto?>" class="img-responsive" />

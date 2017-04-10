@@ -11,7 +11,7 @@ function sec_session_start() {
     $secure = SECURE;
     $httponly = true;
     if (ini_set('session.use_only_cookies', 1) === FALSE) {
-        header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
+        header("Location: ../error.php?err=error_securesession");
         exit();
     }
     $cookieParams = session_get_cookie_params();

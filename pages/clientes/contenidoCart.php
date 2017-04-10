@@ -51,7 +51,9 @@ if ($stmt) {
               <span class="main-color-text">'. array_sum($totalArray).'€</span>
               </div>'
             );
-	}
+	}else{
+    echo '<h3 class="well"> No hay productos...</h3>';
+  }
 }
 ?>
 

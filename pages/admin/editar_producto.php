@@ -18,7 +18,7 @@ if(isset($idProducto)){
 		$prep_stmt = "UPDATE productos SET nombreProducto=?, stock=?,descripcion=?,foto=?,fecha_caducidad=?,precio=?,rating=?,oferta=?,categoria=? WHERE idProducto = ? LIMIT 1";
 	$stmt = $mysqli->prepare($prep_stmt);
 	if ($stmt) {
-	    $stmt->bind_param('sisssiiisi',
+	    $stmt->bind_param('sissssiisi',
 	    	$nombreProducto,
 	    	$stock,
 	    	$descripcion,

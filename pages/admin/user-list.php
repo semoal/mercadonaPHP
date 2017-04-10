@@ -31,7 +31,6 @@ sec_session_start();
        <th><span>Dirección</span></th>
        <th><span>Provincia</span></th>
        <th><span>Telefono</span></th>
-       <th class="text-center"><span>Gasto</span></th>
        <th><span>Email</span></th>
        <th><span>Role</span></th>
        <th><span>Opciones</span></th>
@@ -58,9 +57,6 @@ sec_session_start();
        <td class="col-md-2" ><?php echo $direccion ?></td>
        <td class="col-md-2"><?php echo $provincia ?></td>
        <td><?php echo $telefono ?></td>
-       <td class="text-center"> 
-          <span class="label label-default">0€</span>
-      </td>
       <td> 
           <a href="#"><?php echo $email ?></a>
       </td>

@@ -100,8 +100,8 @@ if(isset($_REQUEST['buy'])){
 			}
 	    }
 	}
-	 $prep_stmt = "DELETE FROM carrito where idUser = ?";
-	 $stmt = $mysqli->prepare($prep_stmt);
+	$prep_stmt = "DELETE FROM carrito where idUser = ?";
+	$stmt = $mysqli->prepare($prep_stmt);
 		if ($stmt) {
 			$stmt->bind_param('i',$_SESSION['user_id']);
 		    $stmt->execute();

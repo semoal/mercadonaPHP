@@ -1,6 +1,8 @@
 <?php
 include_once('productosModelo.php');
 ?>
+<script src="js/bootstrap-datepicker.js"></script>
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" media="all" />
 <div class="modal-dialog">
    <div class="modal-content">
       <div class="modal-header">
@@ -55,7 +57,7 @@ include_once('productosModelo.php');
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Precio</label>
                     <div class="col-sm-3">
-                        <input type="number" value="<?php echo $precio?>" class="form-control" name="precio" id="date_start" placeholder="Precio">
+                        <input type="text" value="<?php echo $precio?>" class="form-control" name="precio" id="date_start" placeholder="Precio">
                     </div>
                 </div>
                 <!-- form-group // -->
@@ -64,19 +66,19 @@ include_once('productosModelo.php');
                     <div class="col-sm-3">
                         <select name="rating" class="form-control" value="<?php echo $rating?>">
                             <option value="1">
-                               1
+                                1 estrella
                             </option>
                             <option value="2">
-                               2
+                                2 estrellas
                             </option>
                             <option value="3">
-                                3
+                                3 estrellas
                             </option>
                             <option value="4">
-                                4
+                                4 estrellas
                             </option>
                             <option value="5">
-                                5
+                                 5 estrellas
                             </option>
                         </select>
                     </div>

@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/datepicker.css" rel="stylesheet" type="text/css" media="all" />
     <link href="css/sweetalert.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <style type="text/css">
        @import url('https://fonts.googleapis.com/css?family=Roboto');
           h4, h5, h6,
@@ -195,39 +197,19 @@
                     <div class="col-sm-3">
                         <select name="rating" class="form-control" data-show-icon="true">
                             <option value="1">
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                1 estrella
                             </option>
                             <option value="2">
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                2 estrellas
                             </option>
                             <option value="3">
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                3 estrellas
                             </option>
                             <option value="4">
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                4 estrellas
                             </option>
                             <option value="5">
-                                 <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
-                                <i class="price-text-color fa fa-star"></i>
+                                 5 estrellas
                             </option>
                         </select>
                     </div>

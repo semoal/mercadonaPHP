@@ -177,6 +177,10 @@
       <div class="well">
       <button data-target="#loginModal" data-toggle="modal" class="btn btn-primary">Iniciar sesión</button>
       <button data-target="#registerModal" data-toggle="modal" class="btn btn-primary">Registrarse </button>
+      <a href="controllers/createDB.php">
+            <button class="btn btn-primary">Crea DB </button>
+      </a>
+
       </div>
       <div class="well">
        <p>Un proyecto compartido y sostenible que lleva más de 35 años construyéndose, que la sociedad quiera que exista, sienta orgullo de él y mejore constantemente</p>
@@ -256,6 +260,7 @@
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="heading"> Registrate como cliente </h4>
+                        <figcaption> Si se registra con usuario<b>@mercadona.es</b> pasará a ser administrador</figcaption>
                       </div>
                       <div class="modal-body">
                           <form class="form-signin" method="POST" action="controllers/register_process">
@@ -300,6 +305,22 @@
       swal({
         title: "Oops..!",
         text: "La contraseña no es correcta",
+        type: "error"
+      });
+      </script>';
+  }else if(isset($_REQUEST['err']) && $_REQUEST['err'] == 'success'){
+    echo '  <script>
+      swal({
+        title: "Bien hecho..!",
+        text: "Ya esta creada la Base de datos, ahora registrate",
+        type: "success"
+      });
+      </script>';
+  }else if(isset($_REQUEST['err']) && $_REQUEST['err'] == 'creating'){
+    echo '  <script>
+      swal({
+        title: "Oops..!",
+        text: "La creación de la base de datos ha dado un error",
         type: "error"
       });
       </script>';

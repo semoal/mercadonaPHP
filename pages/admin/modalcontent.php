@@ -1,6 +1,9 @@
 <?php
 include_once('user_checker.php');
 ?>
+<script src="js/bootstrap-datepicker.js"></script>
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" media="all" />
+
 <div class="modal-dialog">
    <div class="modal-content">
       <div class="modal-header">
